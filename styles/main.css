@@ -350,8 +350,7 @@ ul {
 }
 .slider {
     overflow: hidden;
-    /* display: flex; */
-    /* justify-content: center; */
+    padding-left: 20px;
 }
 .players__list {
     display: flex;
