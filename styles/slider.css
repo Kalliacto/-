@@ -36,28 +36,20 @@
     right: 0;
     top: -25%;
 }
-
-.btn__round {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    transition: all 1s ease;
-    background: url('../img/arrow.svg') no-repeat center, var(--second-black);
+.slides__count_info-parent {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 6px;
 }
 
-.btn__round.left {
-    transform: rotate(180deg);
+.slides__count_info-child {
+    display: inline-block;
+    background: var(--gray-dots);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 }
-
-.btn__round:hover {
-    background: url('../img/arrow.svg') no-repeat center, var(--yellow);
-}
-
-.btn__round:disabled {
-    background: url('../img/arrow.svg') no-repeat center, var(--gray);
+.slides__count_info-child.active {
+    background: var(--second-black);
 }
 
 @media (max-width: 1000px) {

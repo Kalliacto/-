@@ -21,6 +21,16 @@ const stagesCardInfo = [
     'Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анжелос и Мельбурн',
 ];
 
+function createElem(tag, options = {}) {
+    const elem = document.createElement(tag);
+
+    for (const option in options) {
+        elem[option] = options[option];
+    }
+
+    return elem;
+}
+
 function createPlayerCard(player) {
     const div = document.createElement('div');
     div.className = 'player';
@@ -46,30 +56,37 @@ function createStagesItem(str, i) {
     return p;
 }
 
-function createStagesCard() {
-    const div = document.createElement('div');
-    div.className = 'stages__card';
-
-    return div;
-}
-
 function allocationItem(stagesInfoArr) {
     const arr = [];
     let card;
 
     for (let i = 0; i < stagesInfoArr.length; ) {
+        card = createElem('div', { className: 'stages__card' });
+
         if (stagesInfoArr[i].length > 80) {
-            card = createStagesCard();
             card.append(createStagesItem(stagesInfoArr[i], i));
-            arr.push(card);
             i++;
         } else {
-            card = createStagesCard();
             card.append(createStagesItem(stagesInfoArr[i], i), createStagesItem(stagesInfoArr[i + 1], i + 1));
-            arr.push(card);
             i += 2;
         }
+
+        arr.push(card);
     }
 
     return arr;
+}
+
+function paintGridStages(stagesInfoArr) {
+    const stagesList = createElem('ul', { className: 'stages__list' });
+
+    let card;
+
+    for (let i = 0; i < stagesInfoArr.length; i++) {
+        card = createElem('li', { className: 'stages__card-li' });
+        card.append(createStagesItem(stagesInfoArr[i], i));
+        stagesList.append(card);
+    }
+
+    return stagesList;
 }

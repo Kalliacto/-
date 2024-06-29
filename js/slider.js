@@ -1,5 +1,6 @@
 class Slider {
     constructor(config = {}) {
+        this.config = config;
         this.root = config.root;
         this.sliderRoot = createElem('div');
 
@@ -17,12 +18,13 @@ class Slider {
         this.sliderBtns = createElem('div', { className: 'slider__btns' });
         this.btnLeft = createElem('button', { className: 'btn__round left' });
 
+        this.countSlidesInfoParent = createElem('span', { className: 'slides__count_info-parent' });
         if (config.type !== 'dots') {
-            this.countSlidesInfoParent = createElem('span');
             this.countSlidesInfoCurrent = createElem('span');
             this.countSlidesInfoTotal = createElem('span');
             this.countSlidesInfoParent.append(this.countSlidesInfoCurrent, '/', this.countSlidesInfoTotal);
         }
+
         this.btnRight = createElem('button', { className: 'btn__round right' });
         this.sliderBtns.append(this.btnLeft, this.countSlidesInfoParent, this.btnRight);
 
@@ -44,14 +46,24 @@ class Slider {
         this.btnRight.addEventListener('click', () => this.#moveSlide('right'));
     }
 
-    mount(delay) {
+    mount() {
         this.root.append(this.sliderRoot);
-        this.updateSize();
-        this.countSlidesInfoCurrent.textContent = this.currentCard;
-        this.countSlidesInfoTotal.textContent = this.totalCardCount;
-        if (delay) {
-            this.#autoPlaySlide(delay);
+
+        if (this.config.type !== 'dots') {
+            this.countSlidesInfoCurrent.textContent = this.currentCard;
+            this.countSlidesInfoTotal.textContent = this.totalCardCount;
         }
+        if (this.config.type === 'dots') {
+            for (let i = 0; i < this.totalCardCount; i++) {
+                this.countSlidesInfoParent.append(createElem('span', { className: 'slides__count_info-child' }));
+            }
+        }
+
+        if (this.config.delay) {
+            this.#autoPlaySlide(this.config.delay);
+        }
+        // Если чтото сломается,updateSize был перемещен  с 51 на 66
+        this.updateSize();
     }
 
     updateSize() {
@@ -68,8 +80,25 @@ class Slider {
         this.#updateCountSlidesInfo();
     }
 
+    changeVisible(str) {
+        this.sliderRoot.style.display = str;
+    }
+
     #updateCountSlidesInfo() {
-        this.countSlidesInfoCurrent.textContent = this.currentCard;
+        if (this.config.type !== 'dots') {
+            this.countSlidesInfoCurrent.textContent = this.currentCard;
+        }
+        if (this.config.type === 'dots') {
+            let children = this.countSlidesInfoParent.children;
+
+            for (let i = 0; i < children.length; i++) {
+                if (i + 1 === this.currentCard) {
+                    children[i].classList.add('active');
+                } else {
+                    children[i].classList.remove('active');
+                }
+            }
+        }
     }
 
     #addSlides(slides) {
@@ -133,14 +162,4 @@ class Slider {
             }
         }, delay);
     }
-}
-
-function createElem(tag, options = {}) {
-    const elem = document.createElement(tag);
-
-    for (const option in options) {
-        elem[option] = options[option];
-    }
-
-    return elem;
 }
