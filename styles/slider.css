@@ -1,0 +1,85 @@
+.slider__title {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 120%;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+}
+
+.slider__container {
+    position: relative;
+}
+
+.slider {
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+.slider__list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    width: max-content;
+    transition: all 0.5s ease-out;
+}
+
+.slide {
+    width: var(--cardSize);
+}
+
+.slider__btns {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: absolute;
+    right: 0;
+    top: -25%;
+}
+.slides__count_info-parent {
+    display: flex;
+    gap: 6px;
+}
+
+.slides__count_info-child {
+    display: inline-block;
+    background: var(--gray-dots);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.slides__count_info-child.active {
+    background: var(--second-black);
+}
+
+@media (max-width: 1000px) {
+    .slider__container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+    .slider__btns {
+        position: static;
+        align-self: center;
+    }
+}
+
+@media (max-width: 820px) {
+    .container {
+        --padding: 40px;
+    }
+
+    .slider__title {
+        font-size: 44px;
+    }
+}
+
+@media (max-width: 520px) {
+    .container {
+        --padding: 20px;
+    }
+
+    .slider__title {
+        font-size: 36px;
+    }
+}

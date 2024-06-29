@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./styles/main.css" />
+        <link rel="stylesheet" href="./styles/slider.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -11,6 +12,8 @@
             rel="stylesheet"
         />
         <title>Клуб четырех коней</title>
+        <script src="./js/scriptUtils.js" defer></script>
+        <script src="./js/slider.js" defer></script>
         <script src="./js/script.js" defer></script>
     </head>
     <body>
@@ -83,8 +86,7 @@
                 </div>
             </div>
         </section>
-        <section class="stages">
-            <div class="container">
+        <section class="stages container">
                 <div class="stages__title-wrap">
                     <h3 class="stages__title">
                         Этапы преображения Васюков<span class="stages__title-sub text-blue"
@@ -92,62 +94,12 @@
                         >
                     </h3>
                 </div>
-
-                <div class="stages__content"></div>
-            </div>
-        </section>
-        <section class="players">
-            <div class="container">
-                <h4 class="players__title">Участники турнира</h4>
-                <div class="players__slider">
-                    <div class="slider">
-                        <ul class="players__list">
-                            <li class="player">
-                                <img class="player__img" src="./img/profile.png" alt="profile" />
-                                <h4 class="player__name">Хозе-Рауль Капабланка</h4>
-                                <p class="player__info">Чемпион мира по шахматам</p>
-                                <button class="btn__oval">Подробнее</button>
-                            </li>
-                            <li class="player">
-                                <img class="player__img" src="./img/profile.png" alt="profile" />
-                                <h4 class="player__name">Эммануил Ласкер</h4>
-                                <p class="player__info">Чемпион мира по шахматам</p>
-                                <button class="btn__oval">Подробнее</button>
-                            </li>
-                            <li class="player">
-                                <img class="player__img" src="./img/profile.png" alt="profile" />
-                                <h4 class="player__name">Александр Алехин</h4>
-                                <p class="player__info">Чемпион мира по шахматам</p>
-                                <button class="btn__oval">Подробнее</button>
-                            </li>
-                            <li class="player">
-                                <img class="player__img" src="./img/profile.png" alt="profile" />
-                                <h4 class="player__name">Арон Нимцович</h4>
-                                <p class="player__info">Чемпион мира по шахматам</p>
-                                <button class="btn__oval">Подробнее</button>
-                            </li>
-                            <li class="player">
-                                <img class="player__img" src="./img/profile.png" alt="profile" />
-                                <h4 class="player__name">Рихард Рети</h4>
-                                <p class="player__info">Чемпион мира по шахматам</p>
-                                <button class="btn__oval">Подробнее</button>
-                            </li>
-                            <li class="player">
-                                <img class="player__img" src="./img/profile.png" alt="profile" />
-                                <h4 class="player__name">Остап Бендер</h4>
-                                <p class="player__info">Чемпион мира по шахматам</p>
-                                <button class="btn__oval">Подробнее</button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="players__slider_btns">
-                        <button class="btn__round left"></button>
-                        <span>1 / 3</span>
-                        <button onclick="click" class="btn__round right"></button>
-                    </div>
+                <div class="stages__content">
+                    <img class="plane" src="./img/Plane.png" alt="Plane">
                 </div>
             </div>
         </section>
+        <section class="players container"></section>
         <div class="running__line">
             <ul class="running__line_list">
                 <li class="running__line-item"><img src="./img/ellipse.svg" alt="ellipse" /></li>
